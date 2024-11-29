@@ -42,7 +42,7 @@ class EditionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Edition
-        fields = ['id', 'name', 'description', 'release_date', 'download_url', 'articles', 'coverimage', 'pdf_file']
+        fields = ['id', 'name', 'description', 'release_date', 'download_url', 'articles', 'coverimage', 'pdf_file', 'editors_desk_speech']
 
     def get_articles(self, obj):
         articles = obj.articles.all()
