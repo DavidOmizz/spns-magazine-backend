@@ -237,6 +237,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from cloudinary.utils import cloudinary_url
+from django.db.models import Q
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
@@ -305,6 +306,32 @@ class ArticleViewSet(viewsets.ModelViewSet):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def get_queryset(self):
+        """
+        Custom queryset to handle year-based filtering.
+        """
+        queryset = super().get_queryset()
+        search_query = self.request.query_params.get('search', None)
+        if search_query:
+            # Check if the query is numeric and of length 4 (likely a year)
+            if search_query.isdigit() and len(search_query) == 4:
+                queryset = queryset.filter(
+                    Q(publication_date__year=search_query) |
+                    Q(title__icontains=search_query) |
+                    Q(content__icontains=search_query) |
+                    Q(contributor__full_name__icontains=search_query)|
+                    Q(industry__icontains=search_query) |
+                    Q(edition__name__icontains=search_query)
+                )
+            else:
+                queryset = queryset.filter(
+                    Q(title__icontains=search_query) |
+                    Q(content__icontains=search_query) |
+                    Q(contributor__full_name__icontains=search_query) |
+                    Q(industry__icontains=search_query) |
+                    Q(edition__name__icontains=search_query)
+                )
+        return queryset
 
     
 ## Working

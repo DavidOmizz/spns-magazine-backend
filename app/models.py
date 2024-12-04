@@ -57,12 +57,12 @@ class Edition(models.Model):
 class Article(models.Model):
     INDUSTRY_CHOICES = [
         ('FIN', 'Finance'),
-        ('DATA', 'Data Analysis'),
+        ('DATA', 'Data Analytics'),
         ('CUB', 'Construction Business'),
         ('ENGR', 'Engineering'),
         ('SME', 'SME Development'),
         ('TM', 'Tourism'),
-        ('CUST', 'Customer Care/experience Management'),
+        ('CUST', 'CUSTOMER SERVICE AND EXPERIENCE MANAGEMENT'),
     ]
      
     title = models.CharField(max_length=255)

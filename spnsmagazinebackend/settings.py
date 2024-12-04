@@ -132,7 +132,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-print(f"DEFAULT_FILE_STORAGE: {DEFAULT_FILE_STORAGE}")
+# print(f"DEFAULT_FILE_STORAGE: {DEFAULT_FILE_STORAGE}")
 
 
 STATIC_URL = 'static/'
@@ -168,7 +168,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,  # Number of articles per page
+    'PAGE_SIZE': 12,  # Number of articles per page
 }
 
 
