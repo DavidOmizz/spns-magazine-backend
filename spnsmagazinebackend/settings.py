@@ -132,7 +132,7 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-print(f"DEFAULT_FILE_STORAGE: {DEFAULT_FILE_STORAGE}")
+# print(f"DEFAULT_FILE_STORAGE: {DEFAULT_FILE_STORAGE}")
 
 
 STATIC_URL = 'static/'
